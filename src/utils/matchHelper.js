@@ -1,6 +1,7 @@
 const HOME_TEAM_COEFFICENT = 55;
 const AWAY_TEAM_COEFFICENT = 45;
 const POSSIBLE_LOWEST_GOAL_CHANCE = 0.02;
+const POWER_DIFF_COEFFICIENT = 2;
 
 const simulateMatch = (team1, team2) => {
     let team1Attack = team1.attack;
@@ -14,8 +15,8 @@ const simulateMatch = (team1, team2) => {
     for (let minute = 0; minute < 90; minute++) {
         let team1GoalChance = Math.random() * 100;
         let team2GoalChance = Math.random() * 100;
-        let team1GoalProbability = Math.max(POSSIBLE_LOWEST_GOAL_CHANCE ,(team1Attack - team2Defense + HOME_TEAM_COEFFICENT) / 100);
-        let team2GoalProbability = Math.max(POSSIBLE_LOWEST_GOAL_CHANCE ,(team2Attack - team1Defense + AWAY_TEAM_COEFFICENT) / 100);
+        let team1GoalProbability = Math.max(POSSIBLE_LOWEST_GOAL_CHANCE ,((team1Attack - team2Defense) * POWER_DIFF_COEFFICIENT + HOME_TEAM_COEFFICENT) / 100);
+        let team2GoalProbability = Math.max(POSSIBLE_LOWEST_GOAL_CHANCE ,((team2Attack - team1Defense) * POWER_DIFF_COEFFICIENT + AWAY_TEAM_COEFFICENT) / 100);
 
 
         if (team1GoalChance < team1GoalProbability) {
@@ -47,7 +48,7 @@ let highestScoreDiff= {
 };
 let scoreOccurence = {};
 
-for( let i = 0; i < 100; i++){
+for( let i = 0; i < 1000; i++){
     let result = simulateMatch(team1, team2);
 
     if(result.team1Score > result.team2Score){
@@ -71,7 +72,7 @@ for( let i = 0; i < 100; i++){
 
 console.log('TEAM 1 ATK:', team1.attack, ' DEF:', team1.defense);
 console.log('TEAM 2 ATK:', team2.attack, ' DEF:', team2.defense);
-console.log('100 games played');
+console.log('1000 games played');
 console.log('TEAM 1 won:', team1Wins);
 console.log('TEAM 2 won:', team2Wins);
 console.log('draw:', draw);

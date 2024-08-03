@@ -1,3 +1,7 @@
+const HOME_TEAM_COEFFICENT = 55;
+const AWAY_TEAM_COEFFICENT = 45;
+const POSSIBLE_LOWEST_GOAL_CHANCE = 0.02;
+
 const simulateMatch = (team1, team2) => {
     let team1Attack = team1.attack;
     let team1Defense = team1.defense;
@@ -10,8 +14,8 @@ const simulateMatch = (team1, team2) => {
     for (let minute = 0; minute < 90; minute++) {
         let team1GoalChance = Math.random() * 100;
         let team2GoalChance = Math.random() * 100;
-        let team1GoalProbability = Math.max(0.02 ,(team1Attack - team2Defense + 50) / 100);
-        let team2GoalProbability = Math.max(0.02 ,(team2Attack - team1Defense + 50) / 100);
+        let team1GoalProbability = Math.max(POSSIBLE_LOWEST_GOAL_CHANCE ,(team1Attack - team2Defense + HOME_TEAM_COEFFICENT) / 100);
+        let team2GoalProbability = Math.max(POSSIBLE_LOWEST_GOAL_CHANCE ,(team2Attack - team1Defense + AWAY_TEAM_COEFFICENT) / 100);
 
 
         if (team1GoalChance < team1GoalProbability) {
@@ -30,9 +34,9 @@ const simulateMatch = (team1, team2) => {
     };
 }
 
-const team1 = {attack: 85, defense: 25};
-const team2 = { attack: 75, defense: 70};
-
+//For Simulation and Test purposes
+const team1 = {attack: 85, defense: 85};
+const team2 = { attack: 85, defense: 85};
 
 let team1Wins = 0;
 let team2Wins = 0;

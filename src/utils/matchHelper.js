@@ -36,47 +36,47 @@ const simulateMatch = (team1, team2) => {
 }
 
 //For Simulation and Test purposes
-const team1 = {attack: 85, defense: 85};
-const team2 = { attack: 85, defense: 85};
-
-let team1Wins = 0;
-let team2Wins = 0;
-let draw = 0;
-let highestScoreDiff= {
-    homeTeamScore: 0,
-    awayTeamScore: 0,
-};
-let scoreOccurence = {};
-
-for( let i = 0; i < 1000; i++){
-    let result = simulateMatch(team1, team2);
-
-    if(result.homeTeamScore > result.awayTeamScore){
-        team1Wins++;
-    } else if (result.homeTeamScore < result.awayTeamScore){
-        team2Wins++;
-    } else {
-        draw++;
-    }
-
-    if(scoreOccurence[`${result.homeTeamScore}-${result.awayTeamScore}`]){
-        scoreOccurence[`${result.homeTeamScore}-${result.awayTeamScore}`]++;
-    }else {
-        scoreOccurence[`${result.homeTeamScore}-${result.awayTeamScore}`] = 1;
-    }
-
-    if(Math.abs(result.homeTeamScore - result.awayTeamScore) > Math.abs(highestScoreDiff.homeTeamScore- highestScoreDiff.awayTeamScore)){
-        highestScoreDiff = result;
-    }
-}
-
-console.log('TEAM 1 ATK:', team1.attack, ' DEF:', team1.defense);
-console.log('TEAM 2 ATK:', team2.attack, ' DEF:', team2.defense);
-console.log('1000 games played');
-console.log('TEAM 1 won:', team1Wins);
-console.log('TEAM 2 won:', team2Wins);
-console.log('draw:', draw);
-console.log('Highest Goal Difference:', highestScoreDiff.homeTeamScore, ':',  highestScoreDiff. awayTeamScore);
-console.log('Score Occurence:', scoreOccurence);
+// const team1 = {attack: 85, defense: 85};
+// const team2 = { attack: 85, defense: 85};
+//
+// let team1Wins = 0;
+// let team2Wins = 0;
+// let draw = 0;
+// let highestScoreDiff= {
+//     homeTeamScore: 0,
+//     awayTeamScore: 0,
+// };
+// let scoreOccurence = {};
+//
+// for( let i = 0; i < 1000; i++){
+//     let result = simulateMatch(team1, team2);
+//
+//     if(result.homeTeamScore > result.awayTeamScore){
+//         team1Wins++;
+//     } else if (result.homeTeamScore < result.awayTeamScore){
+//         team2Wins++;
+//     } else {
+//         draw++;
+//     }
+//
+//     if(scoreOccurence[`${result.homeTeamScore}-${result.awayTeamScore}`]){
+//         scoreOccurence[`${result.homeTeamScore}-${result.awayTeamScore}`]++;
+//     }else {
+//         scoreOccurence[`${result.homeTeamScore}-${result.awayTeamScore}`] = 1;
+//     }
+//
+//     if(Math.abs(result.homeTeamScore - result.awayTeamScore) > Math.abs(highestScoreDiff.homeTeamScore- highestScoreDiff.awayTeamScore)){
+//         highestScoreDiff = result;
+//     }
+// }
+//
+// console.log('TEAM 1 ATK:', team1.attack, ' DEF:', team1.defense);
+// console.log('TEAM 2 ATK:', team2.attack, ' DEF:', team2.defense);
+// console.log('1000 games played');
+// console.log('TEAM 1 won:', team1Wins);
+// console.log('TEAM 2 won:', team2Wins);
+// console.log('draw:', draw);
+// console.log('Highest Goal Difference:', highestScoreDiff.homeTeamScore, ':',  highestScoreDiff. awayTeamScore);
+// console.log('Score Occurence:', scoreOccurence);
 
 module.exports = simulateMatch;

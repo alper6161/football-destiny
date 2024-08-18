@@ -3,58 +3,125 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {getApi, postApi} from "../../firebase";
 import {useEffect, useState} from "react";
 import {superLigTeams} from "@/constants/constants";
-import {createWeeklyLeagueFixture, initializeLeague, simulateWeekByLeagueFixture, updateLeagueTableByResults} from "@/utils/leagueHelper";
+import {
+    createLeagueFixture,
+    getInitializedLeagueTable,
+    simulateWeekByLeagueFixture,
+    updateLeagueTableByResults
+} from "@/utils/leagueHelper";
 
-const WeekCard = ({data, updateLeague}) => {
+const WeekCard = () => {
 
+    const [gameWeek, setGameWeek] = useState(null);
     const [gameDetails, setGameDetails] = useState(null);
-    const [teams, setTeams] = useState(superLigTeams);
     const [leagueFixture, setLeagueFixture] = useState(null);
+    const [teams, setTeams] = useState(superLigTeams);
     const [currentWeekFixture, setCurrentWeekFixture] = useState();
+    const [weekResults, setWeekResults] = useState(null);
+    const [leagueTable, setLeagueTable] = useState([]);
     const INITIAL_WEEK = 0;
 
     useEffect(() => {
         getApi('gameDetails').then(res => setGameDetails(res[0]));
         getApi('teams').then(res => setTeams(superLigTeams));
+        getApi('leagueFixture').then(res => {
+            if (res) {
+                setLeagueFixture(res.map(weekFixture => weekFixture.matches));
+            }
+        });
     }, []);
 
     useEffect(() => {
-        console.log("gameDetails", gameDetails)
-        if (gameDetails && teams) {
-
-            if(isInitialWeek(gameDetails.week)) {
-                const leagueFixture = createWeeklyLeagueFixture(teams);
-            }
-            let leagueStanding = isInitialWeek(gameDetails.week) ? initializeLeague(teams) : null;
-            console.log("leagueStanding", leagueStanding)
-            leagueStanding.map(team => postApi('league', team?.id, team));
+        if (gameDetails) {
+            setGameWeek(gameDetails.week);
         }
-    }, [gameDetails, teams]);
+    }, [gameDetails]);
+
+    useEffect(() => {
+        if (gameWeek != null) {
+            updateGameWeek(gameWeek);
+            if (isInitialWeek(gameWeek)) {
+                initializeGame();
+            } else {
+                console.log(leagueFixture);
+                console.log(leagueFixture[gameWeek - 1]);
+                setCurrentWeekFixture(leagueFixture[gameWeek - 1]);
+            }
+        }
+    }, [gameWeek])
+
+    const initializeGame = () => {
+        getApi('teams').then(res => {
+            const teams = superLigTeams;
+            setTeams(teams);
+            const initialLeagueTable = getInitializedLeagueTable(teams);
+            updateLeague(initialLeagueTable);
+            setLeagueTable(initialLeagueTable);
+            const leagueFixture = createLeagueFixture(teams);
+            setLeagueFixture(leagueFixture);
+            updateFixture(leagueFixture);
+        });
+    }
 
     const isInitialWeek = (week) => week === INITIAL_WEEK;
 
     const nextWeek = () => {
         // Update game details with +1 week;
-        const weekResults = simulateWeekByLeagueFixture(currentWeekFixture);
+        setGameWeek(gameWeek + 1);
     };
 
-    const goToStanding= () => {
+    const getResults = () => {
         // Update game details with +1 week;
-        updateLeagueTableByResults(leagueStanding, weekResults);
+        setWeekResults(simulateWeekByLeagueFixture(currentWeekFixture));
+    };
+
+    const updateLeague = (leagueStanding) => {
+        leagueStanding.map(team => postApi('league', team?.id, team));
+    };
+
+    const updateFixture = (fixture) => {
+        fixture.map((weekFixture, index) => postApi('leagueFixture', index.toString(), {
+            matches: weekFixture,
+            id: index.toString()
+        }));
+    };
+
+    const updateGameWeek = (gameWeek) => {
+        postApi('gameDetails', 'game_details', {...gameDetails, week: gameWeek});
     };
 
     return (
-        <div style={{width: '20rem', height: '20rem', border: '1px solid #7a8893',borderRadius: '15px', flexDirection: 'column'}} className="centered">
-            <div style={{ fontWeight: 'bold', fontSize: '72px', flex: 4}} className="centered">
+        <div style={{
+            width: '20rem',
+            height: '20rem',
+            border: '1px solid #7a8893',
+            borderRadius: '15px',
+            flexDirection: 'column'
+        }} className="centered">
+            <div style={{fontWeight: 'bold', fontSize: '72px', flex: 4}} className="centered">
                 <span>
-                    {1}
+                    {gameWeek}
                 </span>
             </div>
-            <div style={{flex: 1}}>
-                <button className="button" >
+            <div style={{flex: 1, display: 'flex'}}>
+                <button className="button" style={{flex: 1}} onClick={getResults}>
+                    Results
+                </button>
+                <button className="button" style={{flex: 1}} onClick={nextWeek}>
                     Next Week
                 </button>
             </div>
+            {
+                currentWeekFixture && currentWeekFixture?.map((match, index) =>
+                    <div>
+                        <span>{match.homeTeam.name}</span>
+                        {weekResults && <span>{weekResults[index].homeTeamScore}</span>}
+                        -
+                        {weekResults && <span>{weekResults[index].awayTeamScore}</span>}
+                        <span>{match.awayTeam.name}</span>
+                    </div>
+                )
+            }
         </div>
     )
 }

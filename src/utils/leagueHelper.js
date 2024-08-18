@@ -1,7 +1,6 @@
 const simulateMatch = require('./matchHelper');
-const superLigTeams = require('../constants/constants');
 
-export const createWeeklyLeagueFixture = (teams) => {
+export const createLeagueFixture = (teams) => {
     let schedule = [];
     let totalTeams = teams.length;
     let totalRounds = (totalTeams - 1) * 2;
@@ -34,7 +33,7 @@ export const createWeeklyLeagueFixture = (teams) => {
     return schedule.concat(returnLeg);
 }
 
-export const initializeLeague = (teams) => {
+export const getInitializedLeagueTable = (teams) => {
     return teams.map(team => ({
         id: team.name,
         name: team.name,

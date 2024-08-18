@@ -79,3 +79,4 @@ console.log('draw:', draw);
 console.log('Highest Goal Difference:', highestScoreDiff.team1Score, ':',  highestScoreDiff. team2Score);
 console.log('Score Occurence:', scoreOccurence);
 
+module.exports = simulateMatch;

@@ -9,8 +9,8 @@ const simulateMatch = (team1, team2) => {
     let team2Attack = team2.attack;
     let team2Defense = team2.defense;
 
-    let team1Score = 0;
-    let team2Score = 0;
+    let homeTeamScore = 0;
+    let awayTeamScore = 0;
 
     for (let minute = 0; minute < 90; minute++) {
         let team1GoalChance = Math.random() * 100;
@@ -20,18 +20,18 @@ const simulateMatch = (team1, team2) => {
 
 
         if (team1GoalChance < team1GoalProbability) {
-            team1Score++;
+            homeTeamScore++;
         }
 
         if (team2GoalChance < team2GoalProbability) {
-            team2Score++;
+            awayTeamScore++;
         }
 
     }
 
     return {
-        team1Score: team1Score,
-        team2Score: team2Score
+        homeTeamScore,
+        awayTeamScore
     };
 }
 
@@ -43,29 +43,29 @@ let team1Wins = 0;
 let team2Wins = 0;
 let draw = 0;
 let highestScoreDiff= {
-    team1Score: 0,
-    team2Score: 0,
+    homeTeamScore: 0,
+    awayTeamScore: 0,
 };
 let scoreOccurence = {};
 
 for( let i = 0; i < 1000; i++){
     let result = simulateMatch(team1, team2);
 
-    if(result.team1Score > result.team2Score){
+    if(result.homeTeamScore > result.awayTeamScore){
         team1Wins++;
-    } else if (result.team1Score < result.team2Score){
+    } else if (result.homeTeamScore < result.awayTeamScore){
         team2Wins++;
     } else {
         draw++;
     }
 
-    if(scoreOccurence[`${result.team1Score}-${result.team2Score}`]){
-        scoreOccurence[`${result.team1Score}-${result.team2Score}`]++;
+    if(scoreOccurence[`${result.homeTeamScore}-${result.awayTeamScore}`]){
+        scoreOccurence[`${result.homeTeamScore}-${result.awayTeamScore}`]++;
     }else {
-        scoreOccurence[`${result.team1Score}-${result.team2Score}`] = 1;
+        scoreOccurence[`${result.homeTeamScore}-${result.awayTeamScore}`] = 1;
     }
 
-    if(Math.abs(result.team1Score - result.team2Score) > Math.abs(highestScoreDiff.team1Score- highestScoreDiff.team2Score)){
+    if(Math.abs(result.homeTeamScore - result.awayTeamScore) > Math.abs(highestScoreDiff.homeTeamScore- highestScoreDiff.awayTeamScore)){
         highestScoreDiff = result;
     }
 }
@@ -76,7 +76,7 @@ console.log('1000 games played');
 console.log('TEAM 1 won:', team1Wins);
 console.log('TEAM 2 won:', team2Wins);
 console.log('draw:', draw);
-console.log('Highest Goal Difference:', highestScoreDiff.team1Score, ':',  highestScoreDiff. team2Score);
+console.log('Highest Goal Difference:', highestScoreDiff.homeTeamScore, ':',  highestScoreDiff. awayTeamScore);
 console.log('Score Occurence:', scoreOccurence);
 
 module.exports = simulateMatch;

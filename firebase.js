@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import {collection, doc, getDocs, getFirestore, setDoc} from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -12,5 +12,15 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+export const getApi = async (path) => {
+    const querySnapshot = await getDocs(collection(db, path));
+    return querySnapshot.docs.map(doc => ({...doc.data(), id: doc.id}));
+};
+
+export const postApi = async (path, id, data) => {
+    const docRef = doc(db, path, id)
+    await setDoc(docRef, data, { merge: true });
+}
 
 export { db };

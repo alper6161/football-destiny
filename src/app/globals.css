@@ -53,3 +53,12 @@ table {
     width: 25%;
     font-size: 24px;
 }
+
+.background {
+    display: flex;
+    flex-direction: column;
+    background-image: url('/img/stadium.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}

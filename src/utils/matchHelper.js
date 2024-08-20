@@ -8,9 +8,10 @@ const simulateMatch = (team1, team2) => {
     let team1Defense = team1.defense;
     let team2Attack = team2.attack;
     let team2Defense = team2.defense;
-
     let homeTeamScore = 0;
     let awayTeamScore = 0;
+    const homeTeamGoalMinutes = [];
+    const awayTeamGoalMinutes = [];
 
     for (let minute = 0; minute < 90; minute++) {
         let team1GoalChance = Math.random() * 100;
@@ -21,17 +22,21 @@ const simulateMatch = (team1, team2) => {
 
         if (team1GoalChance < team1GoalProbability) {
             homeTeamScore++;
+            homeTeamGoalMinutes.push(minute);
         }
 
         if (team2GoalChance < team2GoalProbability) {
             awayTeamScore++;
+            awayTeamGoalMinutes.push(minute);
         }
 
     }
 
     return {
         homeTeamScore,
-        awayTeamScore
+        awayTeamScore,
+        homeTeamGoalMinutes,
+        awayTeamGoalMinutes,
     };
 }
 

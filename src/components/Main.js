@@ -4,8 +4,6 @@ import {useEffect, useState} from "react";
 import {getApi, postApi} from "../../firebase";
 import {superLigTeams} from "@/constants/constants";
 import {createLeagueFixture, getInitializedLeagueTable, simulateWeekByLeagueFixture} from "@/utils/leagueHelper";
-import WeekCard from "@/components/WeekCard";
-import Score from "@/app/score/page";
 
 const Main = ({children}) => {
     const [gameWeek, setGameWeek] = useState(null);
@@ -39,8 +37,6 @@ const Main = ({children}) => {
             if (isInitialWeek(gameWeek)) {
                 initializeGame();
             } else {
-                console.log(leagueFixture);
-                console.log(leagueFixture[gameWeek - 1]);
                 setCurrentWeekFixture(leagueFixture[gameWeek - 1]);
             }
         }
@@ -86,8 +82,7 @@ const Main = ({children}) => {
 
     return (
         <div className="centered background" style={{flexDirection: 'column'}}>
-            <WeekCard week={gameWeek} />
-            <Score currentWeekFixture={currentWeekFixture} weekResults={weekResults} week={gameWeek}/>
+            {/*<WeekCard week={gameWeek} />*/}
             {children}
         </div>
     )

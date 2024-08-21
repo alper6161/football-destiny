@@ -4,21 +4,14 @@ import simulateMatch from "@/utils/matchHelper";
 import {useEffect, useState} from "react";
 import {MINUTE_INTERVAL_AS_MS} from "@/constants/constants";
 
-const ScoreBoard = ({homeTeam, awayTeam, isMainMatch, onMatchStart, startMatch}) => {
+const ScoreBoard = ({homeTeam, awayTeam, isMainMatch, onMatchStart, startMatch, result }) => {
     const [minute, setMinute] = useState(0)
-    const [result, setResult] = useState(null)
     const [isMatchPlaying, setIsMatchPlaying] = useState(false);
     const [homeTeamScore, setHomeTeamScore] = useState(0);
     const [awayTeamScore, setAwayTeamScore] = useState(0);
     const [homeTeamGoals, setHomeTeamGoals] = useState([]);
     const [awayTeamGoals, setAwayTeamGoals] = useState([]);
     let interval = null;
-
-    useEffect(() => {
-        if(homeTeam && awayTeam){
-            setResult(simulateMatch(homeTeam, awayTeam));
-        }
-    }, []);
 
     useEffect(() => {
         if(isMatchPlaying){

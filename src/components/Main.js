@@ -3,12 +3,12 @@
 import {useEffect} from "react";
 import {getApi, postApi} from "../../firebase";
 import {INITIAL_WEEK, superLigTeams} from "@/constants/constants";
-import {createLeagueFixture, getInitializedLeagueTable, simulateWeekByLeagueFixture} from "@/utils/leagueHelper";
+import {createLeagueFixture, getInitializedLeagueTable} from "@/utils/leagueHelper";
 import {useStore} from "@/zustand/zustand";
 
 const Main = ({children}) => {
     const {
-        currentWeekFixture, gameDetails, gameWeek, leagueFixture, teams,
+        gameDetails, gameWeek, leagueFixture, teams,
         setCurrentWeekFixture, setGameDetails, setGameWeek, setLeagueFixture, setLeagueTable, setTeams
     } = useStore((state) => state)
 

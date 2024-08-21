@@ -1,38 +1,47 @@
 "use client"
-import {superLigTeams} from "@/constants/constants";
 import ScoreBoard from "@/components/ScoreBoard";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {useStore} from "@/zustand/zustand";
+import {simulateWeekByLeagueFixture} from "@/utils/leagueHelper";
 
 const Match = () => {
+    const {weekResults, setWeekResults} = useStore((state) => state)
+    const {currentWeekFixture, gameDetails} = useStore(state => state);
     const [isMatchStarted, setIsMatchStarted] = useState(false);
-    const homeTeam = superLigTeams[3];
-    const awayTeam = superLigTeams[7];
-    const otherMatches = [{
-        homeTeam: superLigTeams[0], awayTeam: superLigTeams[2]
-    }, {
-        homeTeam: superLigTeams[1], awayTeam: superLigTeams[9]
-    }, {
-        homeTeam: superLigTeams[11], awayTeam: superLigTeams[15]
-    }]
+    const [homeTeam, setHomeTeam] = useState();
+    const [awayTeam, setAwayTeam] = useState();
+
+    useEffect(() => {
+        if (currentWeekFixture) {
+            currentWeekFixture.forEach(match => {
+                if ((match.homeTeam.name === gameDetails.myTeam) || (match.awayTeam.name === gameDetails.myTeam)) {
+                    setHomeTeam(match.homeTeam);
+                    setAwayTeam(match.awayTeam);
+                }
+            })
+            setWeekResults(simulateWeekByLeagueFixture(currentWeekFixture))
+        }
+    }, [currentWeekFixture])
 
     return (<div className="page" style={{height: '100vh'}}>
-        <div style={{display: 'flex', flex: 3, padding: '20px', borderRight: '1px solid #ccc'}}>
-            <ScoreBoard
+        <div className="centered" style={{display: 'flex', flex: 3, padding: '20px', borderRight: '1px solid #ccc'}}>
+            {homeTeam && awayTeam && weekResults && <ScoreBoard
                 homeTeam={homeTeam}
                 awayTeam={awayTeam}
                 isMainMatch={true}
-                onMatchStart={() => setIsMatchStarted(true)}>
-            </ScoreBoard>
+                onMatchStart={() => setIsMatchStarted(true)}
+                result={weekResults.find(match => match.homeTeam === gameDetails.myTeam || match.awayTeam === gameDetails.myTeam)}>
+            </ScoreBoard>}
         </div>
-        <div style={{flex: 1, padding: '20px'}}>
-            <h3>Other Match Scores</h3>
-            {otherMatches.map(match =>
-                <ScoreBoard
-                    homeTeam={match.homeTeam}
-                    awayTeam={match.awayTeam}
-                    isMainMatch={false}
-                    startMatch={isMatchStarted}>
-                </ScoreBoard>)
+        <div style={{display: 'flex', flexDirection: 'column', flex: 1, padding: '20px', overflow: 'auto', maxHeight: '45rem'}}>
+            {weekResults && currentWeekFixture.map((match, index) =>
+                    <ScoreBoard
+                        homeTeam={match.homeTeam}
+                        awayTeam={match.awayTeam}
+                        isMainMatch={false}
+                        startMatch={isMatchStarted}
+                        result={weekResults[index]}>
+                    </ScoreBoard>)
             }
         </div>
     </div>);

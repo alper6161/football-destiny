@@ -1,17 +1,26 @@
 'use client'
 import {useRouter, usePathname} from "next/navigation";
+import {useStore} from "@/zustand/zustand";
 
 const Header = () => {
+    const {weekResults, gameWeek, setGameWeek, setWeekResults} = useStore((state) => state)
     const router = useRouter();
     const pathName = usePathname();
 
     const onNextClick = () => {
+        console.log(pathName);
+        console.log(weekResults);
         switch (pathName) {
             case '/':
                 router.push('score')
                 break;
             case '/score':
-                router.push('match')
+                weekResults ? router.push('/') : router.push('match');
+                setGameWeek(gameWeek+1);
+                setWeekResults(null);
+                break;
+            case '/match':
+                router.push('/score?results=true')
                 break;
         }
     };

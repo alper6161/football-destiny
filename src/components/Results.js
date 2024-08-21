@@ -17,9 +17,9 @@ const Results = () => {
                         </div>
                         <div className='score centered'>
                             <>
-                                <div className='goals'>{weekResults ? weekResults[index]?.homeTeamScore : ''}</div>
+                                <div className='goals centered'>{weekResults ? weekResults[index]?.homeTeamScore : ''}</div>
                                 <div> - </div>
-                                <div className='goals'>{weekResults ? weekResults[index]?.awayTeamScore : ''}</div>
+                                <div className='goals centered'>{weekResults ? weekResults[index]?.awayTeamScore : ''}</div>
                             </>
                         </div>
                         <div className='teamName centered'>

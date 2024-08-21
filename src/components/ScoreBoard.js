@@ -61,7 +61,7 @@ const ScoreBoard = ({homeTeam, awayTeam, isMainMatch, onMatchStart, startMatch})
                 <span className="team-score">{homeTeamScore}</span>
                 <div className="goal-times">
                     {
-                        homeTeamGoals.map(goal => <span className="goal-time">{goal}'</span>)
+                        homeTeamGoals.map(goal => <span className="goal-time" key={goal}>{goal}'</span>)
                     }
                 </div>
             </div>
@@ -82,7 +82,7 @@ const ScoreBoard = ({homeTeam, awayTeam, isMainMatch, onMatchStart, startMatch})
                 <span className="team-score">{awayTeamScore}</span>
                 <div className="goal-times">
                     {
-                        awayTeamGoals.map(goal => <span className="goal-time">{goal}'</span>)
+                        awayTeamGoals.map(goal => <span className="goal-time" key={goal}>{goal}'</span>)
                     }
                 </div>
             </div>

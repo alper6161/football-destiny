@@ -72,9 +72,12 @@ body {
 }
 
 .widget {
-    background: white;
-    border-radius: 3rem;
+    background: rgb(255, 255, 255, 75%);
+    border-radius: .4rem;
+    flex: 1;
+    height: 100%;
 }
+
 .page {
     display: flex;
     flex: 1;

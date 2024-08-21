@@ -9,7 +9,7 @@ const Header = ({children}) => {
                 Header
             </div>
             <div>
-                Ikonlar falan
+                Next
             </div>
         </div>
     )

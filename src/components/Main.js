@@ -1,26 +1,23 @@
 "use client"
 
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {getApi, postApi} from "../../firebase";
-import {superLigTeams} from "@/constants/constants";
+import {INITIAL_WEEK, superLigTeams} from "@/constants/constants";
 import {createLeagueFixture, getInitializedLeagueTable, simulateWeekByLeagueFixture} from "@/utils/leagueHelper";
+import {useStore} from "@/zustand/zustand";
 
 const Main = ({children}) => {
-    const [gameWeek, setGameWeek] = useState(null);
-    const [gameDetails, setGameDetails] = useState(null);
-    const [leagueFixture, setLeagueFixture] = useState(null);
-    const [teams, setTeams] = useState(superLigTeams);
-    const [currentWeekFixture, setCurrentWeekFixture] = useState();
-    const [weekResults, setWeekResults] = useState(null);
-    const [leagueTable, setLeagueTable] = useState([]);
-    const INITIAL_WEEK = 0;
+    const {
+        currentWeekFixture, gameDetails, gameWeek, leagueFixture, teams,
+        setCurrentWeekFixture, setGameDetails, setGameWeek, setLeagueFixture, setLeagueTable, setTeams
+    } = useStore((state) => state)
 
     useEffect(() => {
-        getApi('gameDetails').then(res => setGameDetails(res[0]));
+        getApi('gameDetails').then(res => {setGameDetails(res[0])});
         getApi('teams').then(res => setTeams(superLigTeams));
         getApi('leagueFixture').then(res => {
-            if (res) {
-                setLeagueFixture(res.map(weekFixture => weekFixture.matches));
+            if(res){
+                setLeagueFixture(res?.map(weekFixture => weekFixture.matches))
             }
         });
     }, []);
@@ -43,26 +40,18 @@ const Main = ({children}) => {
     }, [gameWeek])
 
     const initializeGame = () => {
-        getApi('teams').then(res => {
-            const teams = superLigTeams;
-            setTeams(teams);
-            const initialLeagueTable = getInitializedLeagueTable(teams);
-            updateLeague(initialLeagueTable);
-            setLeagueTable(initialLeagueTable);
-            const leagueFixture = createLeagueFixture(teams);
-            setLeagueFixture(leagueFixture);
-            updateFixture(leagueFixture);
-        });
+        const initialLeagueTable = getInitializedLeagueTable(teams);
+        updateLeague(initialLeagueTable);
+        setLeagueTable(initialLeagueTable);
+        const leagueFixture = createLeagueFixture(teams);
+        updateFixture(leagueFixture);
+        setLeagueFixture(leagueFixture);
     }
 
     const isInitialWeek = (week) => week === INITIAL_WEEK;
 
     const nextWeek = () => {
         setGameWeek(gameWeek + 1);
-    };
-
-    const getResults = () => {
-        setWeekResults(simulateWeekByLeagueFixture(currentWeekFixture));
     };
 
     const updateLeague = (leagueStanding) => {
@@ -83,6 +72,7 @@ const Main = ({children}) => {
     return (
         <div className="centered background" style={{flexDirection: 'column'}}>
             {/*<WeekCard week={gameWeek} />*/}
+            <button onClick={() => nextWeek()}>aaaa</button>
             {children}
         </div>
     )

@@ -19,5 +19,9 @@ export const superLigTeams = [
     {name: 'Ankaragücü', attack: 65, defense: 63}
 ];
 
+export const INITIAL_WEEK = 0;
+
+export const MINUTE_INTERVAL_AS_MS = 300;
+
 
 //module.exports = superLigTeams;

@@ -2,17 +2,16 @@
 import './scoreBoard.css'
 import simulateMatch from "@/utils/matchHelper";
 import {useEffect, useState} from "react";
+import {MINUTE_INTERVAL_AS_MS} from "@/constants/constants";
 
 const ScoreBoard = ({homeTeam, awayTeam, isMainMatch, onMatchStart, startMatch}) => {
-
-    const [result, setResult] = useState(null);
-    const [minute, setMinute] = useState(0);
+    const [minute, setMinute] = useState(0)
+    const [result, setResult] = useState(null)
     const [isMatchPlaying, setIsMatchPlaying] = useState(false);
     const [homeTeamScore, setHomeTeamScore] = useState(0);
     const [awayTeamScore, setAwayTeamScore] = useState(0);
     const [homeTeamGoals, setHomeTeamGoals] = useState([]);
     const [awayTeamGoals, setAwayTeamGoals] = useState([]);
-    const MINUTE_INTERVAL_AS_MS = 300;
     let interval = null;
 
     useEffect(() => {

@@ -1,4 +1,4 @@
-import { useStore } from "@/zustand/zustand";
+import {useStore} from "@/zustand/zustand";
 import './results.css';
 
 const Results = () => {
@@ -16,13 +16,11 @@ const Results = () => {
                             {match.homeTeam.name}
                         </div>
                         <div className='score centered'>
-                            {weekResults && (
-                                <>
-                                    <span className='goals'>{weekResults[index]?.homeTeamScore}</span>
-                                    <span> - </span>
-                                    <span className='goals'>{weekResults[index]?.awayTeamScore}</span>
-                                </>
-                            )}
+                            <>
+                                <div className='goals'>{weekResults ? weekResults[index]?.homeTeamScore : ''}</div>
+                                <div> - </div>
+                                <div className='goals'>{weekResults ? weekResults[index]?.awayTeamScore : ''}</div>
+                            </>
                         </div>
                         <div className='teamName centered'>
                             {match.awayTeam.name}

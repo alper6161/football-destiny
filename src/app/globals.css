@@ -72,6 +72,8 @@ body {
 }
 
 .widget {
+    display: flex;
+    flex-direction: column;
     background: rgb(255, 255, 255, 75%);
     border-radius: .4rem;
     flex: 1;

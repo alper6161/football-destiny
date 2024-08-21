@@ -4,13 +4,12 @@ import { persist } from 'zustand/middleware';
 import {INITIAL_WEEK, superLigTeams} from "@/constants/constants";
 
 export const useStore = create(
-    persist(
         (set) => ({
-            gameDetails: {},
+            gameDetails: null,
             teams: superLigTeams,
             leagueTable: [],
-            leagueFixture: {},
-            gameWeek: INITIAL_WEEK,
+            leagueFixture: [],
+            gameWeek: null,
             currentWeekFixture: null,
             weekResults: null,
             setGameDetails: (newGameDetails) => set(() => ({gameDetails: newGameDetails})),
@@ -20,10 +19,5 @@ export const useStore = create(
             setLeagueFixture: newLeagueFixture => set(() => ({leagueFixture: newLeagueFixture})),
             setLeagueTable: newLeagueTable => set(() => ({leagueTable: newLeagueTable})),
             setCurrentWeekFixture: newCurrentWeekFixture => set(() => ({currentWeekFixture: newCurrentWeekFixture})),
-        }),
-        {
-            name: 'gameStorage',
-            getStorage: () => localStorage,
-        }
-    )
+        })
 );

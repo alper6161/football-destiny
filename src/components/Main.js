@@ -13,7 +13,7 @@ const Main = ({children}) => {
     } = useStore((state) => state)
 
     useEffect(() => {
-        getApi('gameDetails').then(res => {setGameDetails(res[0])});
+        getApi('gameDetails').then(res => setGameDetails(res[0]));
         getApi('teams').then(res => setTeams(superLigTeams));
         getApi('leagueFixture').then(res => {
             if(res){
@@ -33,11 +33,11 @@ const Main = ({children}) => {
             updateGameWeek(gameWeek);
             if (isInitialWeek(gameWeek)) {
                 initializeGame();
-            } else {
+            } else if (leagueFixture) {
                 setCurrentWeekFixture(leagueFixture[gameWeek - 1]);
             }
         }
-    }, [gameWeek])
+    }, [gameWeek, leagueFixture])
 
     const initializeGame = () => {
         const initialLeagueTable = getInitializedLeagueTable(teams);

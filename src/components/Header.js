@@ -15,9 +15,13 @@ const Header = () => {
                 router.push('score')
                 break;
             case '/score':
-                weekResults ? router.push('/') : router.push('match');
-                setGameWeek(gameWeek+1);
-                setWeekResults(null);
+                if(weekResults) {
+                    router.push('/');
+                    setGameWeek(gameWeek+1);
+                    setWeekResults(null);
+                } else {
+                    router.push('match');
+                }
                 break;
             case '/match':
                 router.push('/score?results=true')

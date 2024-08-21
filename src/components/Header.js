@@ -8,8 +8,6 @@ const Header = () => {
     const pathName = usePathname();
 
     const onNextClick = () => {
-        console.log(pathName);
-        console.log(weekResults);
         switch (pathName) {
             case '/':
                 router.push('score')

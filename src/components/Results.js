@@ -1,24 +1,34 @@
 import { useStore } from "@/zustand/zustand";
+import './results.css';
 
 const Results = () => {
-    const {currentWeekFixture, week, weekResults} = useStore(state => state);
+    const {currentWeekFixture, gameWeek, weekResults} = useStore(state => state);
 
     return (
-        <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
-            <div>
-                {week}
+        <div className='container'>
+            <div className='week'>
+                Week: {gameWeek}
             </div>
-            <div style={{ flex:1 }}>
-                {
-                    currentWeekFixture && currentWeekFixture?.map((match, index) =>
-                        <div key={index}>
-                            <span>{match.homeTeam.name}</span>
-                            {weekResults && <span>{weekResults[index]?.homeTeamScore}</span>}
-                            -
-                            {weekResults && <span>{weekResults[index]?.awayTeamScore}</span>}
-                            <span>{match.awayTeam.name}</span>
+            <div className='matchList'>
+                {currentWeekFixture && currentWeekFixture.map((match, index) => (
+                    <div key={index} className='matchCard'>
+                        <div className='teamName centered'>
+                            {match.homeTeam.name}
                         </div>
-                    )}
+                        <div className='score centered'>
+                            {weekResults && (
+                                <>
+                                    <span className='goals'>{weekResults[index]?.homeTeamScore}</span>
+                                    <span> - </span>
+                                    <span className='goals'>{weekResults[index]?.awayTeamScore}</span>
+                                </>
+                            )}
+                        </div>
+                        <div className='teamName centered'>
+                            {match.awayTeam.name}
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     )

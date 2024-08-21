@@ -1,7 +1,9 @@
 "use client"
 
-const WeekCard = ({week}) => {
+import {useStore} from "@/zustand/zustand";
 
+const WeekCard = () => {
+    const {gameWeek} = useStore((state) => state)
     return (
         <div style={{
             width: '20rem',
@@ -12,7 +14,7 @@ const WeekCard = ({week}) => {
         }} className="centered">
             <div style={{fontWeight: 'bold', fontSize: '72px', flex: 4}} className="centered">
                 <span>
-                    {week}
+                    Week: {gameWeek}
                 </span>
             </div>
         </div>

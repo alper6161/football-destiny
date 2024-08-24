@@ -23,7 +23,6 @@ const Main = ({children}) => {
         });
         getApi('manager').then(res => setManager(res[0]));
         getApi('facility').then(res => setFacility(res[0]));
-        getApi('league').then(res => setLeagueTable(sortLeague(res, 'points')));
         getApi('weekResults').then(res => setWeekResults(res[0].matches));
     }, []);
 
@@ -39,6 +38,7 @@ const Main = ({children}) => {
             if (isInitialWeek(gameWeek)) {
                 initializeGame();
             } else if (leagueFixture) {
+                getApi('league').then(res => setLeagueTable(sortLeague(res, 'points')));
                 setCurrentWeekFixture(leagueFixture[gameWeek - 1]);
             }
         }
@@ -56,7 +56,6 @@ const Main = ({children}) => {
 
     const initializeGame = () => {
         const initialLeagueTable = getInitializedLeagueTable(teams);
-        updateLeague(initialLeagueTable);
         setLeagueTable(initialLeagueTable);
         const leagueFixture = createLeagueFixture(teams);
         updateFixture(leagueFixture);

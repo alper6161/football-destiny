@@ -1,0 +1,39 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    flex: 1;
+    border-radius: .4rem;
+    overflow: hidden;
+}
+
+.table-title {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    padding: 8px;
+    text-align: center;
+}
+
+.table-label {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.table-body tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Name kolonunu vurgulamak için */
+.table-head th:nth-child(1),
+.table-body td:nth-child(1) {
+    font-weight: bold;
+    color: #007BFF; /* İstediğin bir vurgu rengi */
+    text-align: left;
+}
+
+/* Point kolonunu vurgulamak için */
+.table-head th:last-child,
+.table-body td:last-child {
+    font-weight: bold;
+    color: #FF5733; /* İstediğin bir vurgu rengi */
+}

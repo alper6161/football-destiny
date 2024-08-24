@@ -58,15 +58,15 @@ export const simulateWeekByLeagueFixture = (weeklyFixture) => {
             awayTeam: match.awayTeam.name
         });
     })
-    console.log(weekResults);
+
     return weekResults;
 }
 
-export const updateLeagueTableByResults = async (leagueTable, weekResults) => {
+export const updateLeagueTableByResults = (leagueTable, weekResults) => {
     const newLeagueTable = [];
     weekResults.forEach(result => {
-        const homeTeam = leagueTable.find(leagueTeam => leagueTeam.name === result.homeTeam);
-        const awayTeam = leagueTable.find(leagueTeam => leagueTeam.name === result.awayTeam);
+        const homeTeam = {...leagueTable.find(leagueTeam => leagueTeam.name === result.homeTeam)};
+        const awayTeam = {...leagueTable.find(leagueTeam => leagueTeam.name === result.awayTeam)};
 
         if (result.homeTeamScore > result.awayTeamScore) {
             homeTeam.won++;

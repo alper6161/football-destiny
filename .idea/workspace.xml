@@ -4,19 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="751c7fe7-abf7-41ff-b0d2-5371b9485c4b" name="Changes" comment="adds firebase requests">
-      <change afterPath="$PROJECT_DIR$/public/img/stadium.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Main.js" afterDir="false" />
+    <list default="true" id="751c7fe7-abf7-41ff-b0d2-5371b9485c4b" name="Changes" comment="css changes">
+      <change afterPath="$PROJECT_DIR$/src/components/LeagueTable.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/commonHelper.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeekCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeekCard.js" afterDir="false" />
-    </list>
-    <list id="6ad02071-c580-4bad-b4e2-e308e3bc55ea" name="Changes by Alperen Ustaömer" comment="">
       <change beforePath="$PROJECT_DIR$/src/app/score/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/score/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LeagueTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LeagueTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/leagueHelper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/leagueHelper.js" afterDir="false" />
     </list>
-    <list id="b6124934-1f4a-4e2c-bb0d-9ee85968a439" name="Changes by user" comment="Changes by user" />
+    <list id="6ad02071-c580-4bad-b4e2-e308e3bc55ea" name="Changes by Alperen Ustaömer" comment="" />
+    <list id="b6124934-1f4a-4e2c-bb0d-9ee85968a439" name="Changes by user" comment="Changes by user">
+      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/leagueHelper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/leagueHelper.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,6 +50,25 @@
     &quot;accountId&quot;: &quot;044fcf45-a646-4427-ade2-90674745d62e&quot;
   }
 }</component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/components/Main.js">
+      <ranges>
+        <range start1="7" end1="7" start2="7" end2="8" changelist="751c7fe7-abf7-41ff-b0d2-5371b9485c4b" />
+        <range start1="10" end1="12" start2="11" end2="13" changelist="751c7fe7-abf7-41ff-b0d2-5371b9485c4b" />
+        <range start1="24" end1="24" start2="25" end2="27" changelist="b6124934-1f4a-4e2c-bb0d-9ee85968a439" />
+        <range start1="41" end1="42" start2="44" end2="55" changelist="751c7fe7-abf7-41ff-b0d2-5371b9485c4b" />
+        <range start1="59" end1="60" start2="72" end2="73" changelist="b6124934-1f4a-4e2c-bb0d-9ee85968a439" />
+        <range start1="72" end1="72" start2="85" end2="89" changelist="751c7fe7-abf7-41ff-b0d2-5371b9485c4b" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/utils/leagueHelper.js">
+      <ranges>
+        <range start1="60" end1="61" start2="60" end2="61" changelist="751c7fe7-abf7-41ff-b0d2-5371b9485c4b" />
+        <range start1="64" end1="65" start2="64" end2="65" changelist="b6124934-1f4a-4e2c-bb0d-9ee85968a439" />
+        <range start1="67" end1="69" start2="67" end2="69" changelist="b6124934-1f4a-4e2c-bb0d-9ee85968a439" />
+      </ranges>
+    </file>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -54,21 +76,23 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2jvj3XLkwxEJN59G547NzYHmVMG" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Node.js.leagueHelper.js.executor": "Run",
+    "Node.js.leagueHelper.js.executor": "Debug",
     "Node.js.matchHelper.js.executor": "Run",
     "Node.js.page.js.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/burak/Desktop/projectsg/football-destiny/public/img",
+    "last_opened_file_path": "/home/burak/Desktop/projectsg/football-destiny/src/utils",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -90,6 +114,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/utils" />
       <recent name="$PROJECT_DIR$/public/img" />
       <recent name="$PROJECT_DIR$/src/app" />
     </key>
@@ -129,8 +154,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev" />
         <item itemvalue="Node.js.leagueHelper.js" />
+        <item itemvalue="npm.dev" />
         <item itemvalue="Node.js.matchHelper.js" />
         <item itemvalue="npm.local" />
       </list>
@@ -191,9 +216,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="changes readme file" />
     <MESSAGE value="adds" />
-    <MESSAGE value="Changes by user" />
     <MESSAGE value="adds firebase requests" />
-    <option name="LAST_COMMIT_MESSAGE" value="adds firebase requests" />
+    <MESSAGE value="css changes" />
+    <MESSAGE value="Changes by user" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes by user" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -207,11 +233,6 @@
           <url>file://$PROJECT_DIR$/src/utils/leagueHelper.js</url>
           <line>50</line>
           <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/utils/leagueHelper.js</url>
-          <line>65</line>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

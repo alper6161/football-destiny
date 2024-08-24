@@ -1,5 +1,6 @@
 "use client"
 import Results from '../../components/Results'
+import LeagueTable from "@/components/LeagueTable";
 
 const Score = () => {
     return (
@@ -8,7 +9,7 @@ const Score = () => {
                 <Results />
             </div>
             <div className="widget centered" style={{margin: '.5rem 1rem'}}>
-                League Table
+                <LeagueTable />
             </div>
         </div>
     )

@@ -43,6 +43,7 @@ export const getInitializedLeagueTable = (teams) => {
         lost: 0,
         goalsFor: 0,
         goalsAgainst: 0,
+        goalDiff: 0,
         points: 0
     }));
 }
@@ -87,8 +88,10 @@ export const updateLeagueTableByResults = (leagueTable, weekResults) => {
         awayTeam.played++;
         homeTeam.goalsFor += result.homeTeamScore;
         homeTeam.goalsAgainst += result.awayTeamScore;
+        homeTeam.goalDiff += result.homeTeamScore - result.awayTeamScore;
         awayTeam.goalsFor += result.awayTeamScore;
         awayTeam.goalsAgainst += result.homeTeamScore;
+        awayTeam.goalDiff += result.awayTeamScore - result.homeTeamScore;
 
         newLeagueTable.push(homeTeam);
         newLeagueTable.push(awayTeam);

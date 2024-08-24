@@ -16,12 +16,13 @@ const LeagueTable = () => {
 
     const leagueMap = {
         name: 'Name',
-        played: 'Played',
-        won: 'Win',
-        drawn: 'Draw',
-        lost: 'Lost',
-        goalsFor: 'Goals',
-        goalsAgainst: 'Goals Against',
+        played: 'P',
+        won: 'W',
+        drawn: 'D',
+        lost: 'L',
+        goalsFor: 'GF',
+        goalsAgainst: 'GA',
+        goalDiff: 'GD',
         points: 'Points'
     }
 
@@ -38,11 +39,14 @@ const LeagueTable = () => {
             </thead>
             <tbody className="table-body">
                 {
-                    hasElement(leagueTable) && leagueTable.map((element) => (
+                    hasElement(leagueTable) && leagueTable.map((element, pos) => (
                         <tr>
                             {
-                                Object.keys(leagueMap).map(key => (
+                                Object.keys(leagueMap).map((key, index) => (
                                     <td className="table-label">
+                                        {index === 0 &&
+                                            <span style={{color: 'black', marginRight: '.25rem'}}>{pos + 1 + '.'}</span>
+                                        }
                                         {element[key]}
                                     </td>
                                 ))

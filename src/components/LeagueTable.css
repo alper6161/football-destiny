@@ -23,17 +23,15 @@
     background-color: #f9f9f9;
 }
 
-/* Name kolonunu vurgulamak için */
 .table-head th:nth-child(1),
 .table-body td:nth-child(1) {
     font-weight: bold;
-    color: #007BFF; /* İstediğin bir vurgu rengi */
+    color: #007BFF;
     text-align: left;
 }
 
-/* Point kolonunu vurgulamak için */
 .table-head th:last-child,
 .table-body td:last-child {
     font-weight: bold;
-    color: #FF5733; /* İstediğin bir vurgu rengi */
+    color: #FF5733;
 }

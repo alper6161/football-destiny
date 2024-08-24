@@ -1,4 +1,5 @@
 import WeekCard from "@/components/WeekCard";
+import ManagerCard from "@/components/ManagerCard";
 
 export default async function Home() {
 
@@ -9,7 +10,7 @@ export default async function Home() {
                   <WeekCard />
               </div>
               <div className="widget">
-                  TEST
+                  <ManagerCard />
               </div>
               <div className="widget">
                   TEST

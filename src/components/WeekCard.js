@@ -3,17 +3,14 @@
 import {useStore} from "@/zustand/zustand";
 
 const WeekCard = () => {
-    const {gameWeek} = useStore((state) => state)
+    const {gameWeek, gameDetails} = useStore((state) => state)
     return (
-        <div style={{
-            width: '20rem',
-            height: '20rem',
-            border: '1px solid #7a8893',
-            borderRadius: '15px',
-            flexDirection: 'column'
-        }} className="centered">
-            <div style={{fontWeight: 'bold', fontSize: '72px', flex: 4}} className="centered">
-                <span>
+        <div style={{flex: 1, flexDirection: 'column', display: 'flex'}}>
+            <div style={{flex: 1, fontWeight: 'bold', fontSize: '72px', display: 'flex', flexDirection: 'column'}}>
+                <span style={{flex: 1}} className="centered">
+                    Year: {gameDetails?.year}
+                </span>
+                <span style={{flex: 1}} className="centered">
                     Week: {gameWeek}
                 </span>
             </div>
@@ -21,4 +18,4 @@ const WeekCard = () => {
     )
 }
 
-export default WeekCard
+export default WeekCard;

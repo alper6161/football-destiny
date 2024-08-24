@@ -9,7 +9,7 @@ import {useStore} from "@/zustand/zustand";
 const Main = ({children}) => {
     const {
         gameDetails, gameWeek, leagueFixture, teams,
-        setCurrentWeekFixture, setGameDetails, setGameWeek, setLeagueFixture, setLeagueTable, setTeams
+        setCurrentWeekFixture, setGameDetails, setGameWeek, setLeagueFixture, setLeagueTable, setTeams, setManager
     } = useStore((state) => state)
 
     useEffect(() => {
@@ -20,6 +20,7 @@ const Main = ({children}) => {
                 setLeagueFixture(res?.map(weekFixture => weekFixture.matches))
             }
         });
+        getApi('manager').then(res => setManager(res[0]));
     }, []);
 
     useEffect(() => {

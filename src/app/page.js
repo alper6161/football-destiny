@@ -1,6 +1,7 @@
 import WeekCard from "@/components/WeekCard";
 import ManagerCard from "@/components/ManagerCard";
 import FacilityCard from "@/components/FacilityCard";
+import MoneyCard from "@/components/MoneyCard";
 
 export default async function Home() {
 
@@ -14,16 +15,16 @@ export default async function Home() {
                   <ManagerCard />
               </div>
               <div className="widget">
-                  League Table
+                  <MoneyCard />
               </div>
               <div className="widget">
                   <FacilityCard />
               </div>
               <div className="widget">
-                  <FacilityCard />
+                  Team
               </div>
               <div className="widget">
-                  <FacilityCard />
+                  League
               </div>
           </div>
       </main>

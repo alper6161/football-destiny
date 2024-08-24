@@ -9,7 +9,7 @@ import {useStore} from "@/zustand/zustand";
 const Main = ({children}) => {
     const {
         gameDetails, gameWeek, leagueFixture, teams,
-        setCurrentWeekFixture, setGameDetails, setGameWeek, setLeagueFixture, setLeagueTable, setTeams, setManager
+        setCurrentWeekFixture, setGameDetails, setGameWeek, setLeagueFixture, setLeagueTable, setTeams, setManager, setFacility
     } = useStore((state) => state)
 
     useEffect(() => {
@@ -21,6 +21,7 @@ const Main = ({children}) => {
             }
         });
         getApi('manager').then(res => setManager(res[0]));
+        getApi('facility').then(res => setFacility(res[0]));
     }, []);
 
     useEffect(() => {

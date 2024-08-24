@@ -13,6 +13,7 @@ export const useStore = create(
             currentWeekFixture: null,
             weekResults: null,
             manager: null,
+            facility: null,
             setGameDetails: (newGameDetails) => set(() => ({gameDetails: newGameDetails})),
             setGameWeek: newGameWeek => set(() => ({gameWeek: newGameWeek})),
             setWeekResults: newWeekResult => set(() => ({weekResults: newWeekResult})),
@@ -21,5 +22,6 @@ export const useStore = create(
             setLeagueTable: newLeagueTable => set(() => ({leagueTable: newLeagueTable})),
             setCurrentWeekFixture: newCurrentWeekFixture => set(() => ({currentWeekFixture: newCurrentWeekFixture})),
             setManager: manager => set(() => ({manager: manager})),
+            setFacility: facility => set(() => ({facility: facility})),
         })
 );

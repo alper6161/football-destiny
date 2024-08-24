@@ -1,6 +1,7 @@
 "use client"
 
 import {useStore} from "@/zustand/zustand";
+import {SYSTEM_COLORS} from "@/constants/constants";
 
 const ManagerCard = () => {
     const {manager} = useStore((state) => state);
@@ -10,10 +11,10 @@ const ManagerCard = () => {
             <div style={titleStyle}>MANAGER</div>
             <div style={nameStyle} className='centered'>{manager?.name}</div>
             <div style={statContainerStyle} className='centered'>
-                <div style={statBoxStyle('#ff7754')}>Attack<br /><br />{manager?.attack}</div>
-                <div style={statBoxStyle('#6270b9')}>Defence<br /><br />{manager?.defence}</div>
-                <div style={statBoxStyle('#ac7aaf')}>Coaching<br /><br />{manager?.coaching}</div>
-                <div style={statBoxStyle('#4CAF50')}>Transfer<br /><br />{manager?.transfer}</div>
+                <div style={statBoxStyle(SYSTEM_COLORS.red)}>Attack<br /><br />{manager?.attack}</div>
+                <div style={statBoxStyle(SYSTEM_COLORS.blue)}>Defence<br /><br />{manager?.defence}</div>
+                <div style={statBoxStyle(SYSTEM_COLORS.purple)}>Coaching<br /><br />{manager?.coaching}</div>
+                <div style={statBoxStyle(SYSTEM_COLORS.green)}>Transfer<br /><br />{manager?.transfer}</div>
             </div>
         </div>
     );

@@ -23,5 +23,13 @@ export const INITIAL_WEEK = 0;
 
 export const MINUTE_INTERVAL_AS_MS = 300;
 
+export const SYSTEM_COLORS = {
+    blue:  '#6270b9',
+    darkBlue: '#3F51B5',
+    green: '#4CAF50',
+    purple: '#ac7aaf',
+    red: '#ff7754'
+};
+
 
 //module.exports = superLigTeams;

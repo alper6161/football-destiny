@@ -27,7 +27,6 @@ const cardStyle = {
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: '#f7f7f7',
     textAlign: 'center',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
     width: '100%'

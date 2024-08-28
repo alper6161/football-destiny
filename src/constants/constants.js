@@ -31,5 +31,13 @@ export const SYSTEM_COLORS = {
     red: '#ff7754'
 };
 
+export const FORMATIONS = ['4-5-1', '4-3-3', '4-4-2', '3-5-2', '3-4-3'];
 
-//module.exports = superLigTeams;
+export const TACTIC_TYPES = ['Offensive', 'Defencive', 'Mixed'];
+
+export const POSITIONS = {
+    ATK: 'Attack',
+    DEF: 'Defence',
+    MID: 'Midfielder',
+    GK: 'GoalKeeper'
+};

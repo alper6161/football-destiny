@@ -3,7 +3,7 @@ const AWAY_TEAM_COEFFICENT = 45;
 const POSSIBLE_LOWEST_GOAL_CHANCE = 0.02;
 const POWER_DIFF_COEFFICIENT = 2;
 
-const simulateMatch = (team1, team2) => {
+export const simulateMatch = (team1, team2) => {
     let team1Attack = team1.attack;
     let team1Defense = team1.defense;
     let team2Attack = team2.attack;
@@ -83,5 +83,3 @@ const simulateMatch = (team1, team2) => {
 // console.log('draw:', draw);
 // console.log('Highest Goal Difference:', highestScoreDiff.homeTeamScore, ':',  highestScoreDiff. awayTeamScore);
 // console.log('Score Occurence:', scoreOccurence);
-
-module.exports = simulateMatch;

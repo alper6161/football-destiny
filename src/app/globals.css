@@ -92,4 +92,5 @@ body {
     flex: 1;
     padding: 3rem 0;
     width: 100vw;
+    max-height: 90%;
 }

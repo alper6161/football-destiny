@@ -1,0 +1,67 @@
+.tableContainer {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1200px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f4f4f4;
+    color: #333;
+    font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tr:hover {
+    background-color: #e0e0e0;
+}
+
+.table .name {
+    font-weight: bold; /* Bold yapar */
+    color: #333;
+}
+
+.table .attack, .table .defence {
+    margin: .25rem;
+    text-align: center;
+    border-radius: .5rem;
+    color: #fff;
+    padding: 8px;
+}
+
+.table .attack {
+    background-color: #ff7754;
+}
+
+.table .defence {
+    background-color: #3F51B5;
+}
+
+.table .attack.bold {
+    font-weight: bold;
+}
+
+.table .defence.bold {
+    font-weight: bold;
+}
+
+.table .midfielder {
+    font-weight: normal;
+}

@@ -1,7 +1,5 @@
-'use client'
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware';
-import {INITIAL_WEEK, superLigTeams} from "@/constants/constants";
+import {superLigTeams} from "@/constants/constants";
 
 export const useStore = create(
         (set) => ({
@@ -14,6 +12,7 @@ export const useStore = create(
             weekResults: null,
             manager: null,
             facility: null,
+            squad: null,
             setGameDetails: (newGameDetails) => set(() => ({gameDetails: newGameDetails})),
             setGameWeek: newGameWeek => set(() => ({gameWeek: newGameWeek})),
             setWeekResults: newWeekResult => set(() => ({weekResults: newWeekResult})),
@@ -23,5 +22,6 @@ export const useStore = create(
             setCurrentWeekFixture: newCurrentWeekFixture => set(() => ({currentWeekFixture: newCurrentWeekFixture})),
             setManager: manager => set(() => ({manager: manager})),
             setFacility: facility => set(() => ({facility: facility})),
+            setSquad: squad => set(() => ({squad: squad})),
         })
 );

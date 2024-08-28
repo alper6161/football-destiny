@@ -3,6 +3,7 @@ import ManagerCard from "@/components/ManagerCard";
 import FacilityCard from "@/components/FacilityCard";
 import MoneyCard from "@/components/MoneyCard";
 import LeagueTable from "@/components/LeagueTable";
+import SquadCard from "@/components/SquadCard.js";
 
 export default async function Home() {
 
@@ -22,7 +23,7 @@ export default async function Home() {
                   <FacilityCard />
               </div>
               <div className="widget">
-                  Team
+                  <SquadCard />
               </div>
               <div className="widget">
                   <LeagueTable />

@@ -40,10 +40,10 @@ const LeagueTable = () => {
             <tbody className="table-body">
                 {
                     hasElement(leagueTable) && leagueTable.map((element, pos) => (
-                        <tr>
+                        <tr key={pos}>
                             {
                                 Object.keys(leagueMap).map((key, index) => (
-                                    <td className="table-label">
+                                    <td key={key} className="table-label">
                                         {index === 0 &&
                                             <span style={{color: 'black', marginRight: '.25rem'}}>{pos + 1 + '.'}</span>
                                         }

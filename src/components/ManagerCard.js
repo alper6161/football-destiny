@@ -23,8 +23,6 @@ const ManagerCard = () => {
 export default ManagerCard;
 
 const cardStyle = {
-    border: '2px solid #ddd',
-    borderRadius: '12px',
     flex: 1,
     display: 'flex',
     flexDirection: 'column',

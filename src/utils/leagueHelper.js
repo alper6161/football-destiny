@@ -1,4 +1,4 @@
-const simulateMatch = require('./matchHelper');
+import {simulateMatch} from "../utils/matchHelper.js";
 
 export const createLeagueFixture = (teams) => {
     let schedule = [];

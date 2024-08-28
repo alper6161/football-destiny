@@ -1,17 +1,21 @@
 "use client"
 
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {getApi, postApi} from "../../firebase";
 import {INITIAL_WEEK, superLigTeams} from "@/constants/constants";
 import {createLeagueFixture, getInitializedLeagueTable} from "@/utils/leagueHelper";
 import {useStore} from "@/zustand/zustand";
 import {hasElement, sortLeague} from "@/utils/commonHelper";
+import {createInitialSquad} from "@/utils/squadHelper.js";
 
 const Main = ({children}) => {
     const {
-        gameDetails, gameWeek, leagueFixture, teams, weekResults, leagueTable,
-        setCurrentWeekFixture, setGameDetails, setGameWeek, setLeagueFixture, setLeagueTable, setTeams, setManager, setFacility, setWeekResults
-    } = useStore((state) => state)
+        gameDetails, gameWeek, leagueFixture, teams, weekResults, leagueTable, squad,
+        setCurrentWeekFixture, setGameDetails, setGameWeek, setLeagueFixture, setLeagueTable, setTeams, setManager, setFacility, setWeekResults, setSquad
+    } = useStore((state) => state);
+
+    const [squadPullComplete, setSquadPullComplete] = useState(false);
+    const [isSquadCreated, setIsSquadCreated] = useState(false);
 
     useEffect(() => {
         getApi('gameDetails').then(res => setGameDetails(res[0]));
@@ -24,6 +28,10 @@ const Main = ({children}) => {
         getApi('manager').then(res => setManager(res[0]));
         getApi('facility').then(res => setFacility(res[0]));
         getApi('weekResults').then(res => setWeekResults(res[0].matches));
+        getApi('squad').then(res => {
+            setSquad(res);
+            setSquadPullComplete(true);
+        });
     }, []);
 
     useEffect(() => {
@@ -54,6 +62,15 @@ const Main = ({children}) => {
         }
     }, [leagueTable]);
 
+    useEffect(() => {
+        if(!hasElement(squad) && squadPullComplete && !isSquadCreated) {
+            const squad = createInitialSquad();
+            setSquad(squad);
+            updateSquad(squad);
+            setIsSquadCreated(true);
+        }
+    }, [squad]);
+
     const initializeGame = () => {
         const initialLeagueTable = getInitializedLeagueTable(teams);
         setLeagueTable(initialLeagueTable);
@@ -79,12 +96,12 @@ const Main = ({children}) => {
         }));
     };
 
-    const updateGameWeek = (gameWeek) => {
-        postApi('gameDetails', 'game_details', {...gameDetails, week: gameWeek});
-    };
+    const updateGameWeek = (gameWeek) => postApi('gameDetails', 'game_details', {...gameDetails, week: gameWeek});
 
-    const updateWeekResults = weekResults => {
-        postApi('weekResults', 'week_results', {id: 'week_results', matches: weekResults});
+    const updateWeekResults = weekResults => postApi('weekResults', 'week_results', {id: 'week_results', matches: weekResults});
+
+    const updateSquad = squad => {
+        squad.map(player => postApi('squad', player.name, player))
     }
 
     return (

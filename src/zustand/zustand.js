@@ -1,10 +1,9 @@
 import { create } from 'zustand'
-import {superLigTeams} from "@/constants/constants";
 
 export const useStore = create(
         (set) => ({
             gameDetails: null,
-            teams: superLigTeams,
+            teams: null,
             leagueTable: [],
             leagueFixture: [],
             gameWeek: null,

@@ -52,7 +52,6 @@ export const simulateWeekByLeagueFixture = (weeklyFixture) => {
     const weekResults = [];
     weeklyFixture.forEach(match => {
         let result = simulateMatch(match.homeTeam, match.awayTeam);
-        console.log(match.homeTeam.name + ': ' + result.homeTeamScore +' - ' + match.awayTeam.name + ': ' + result.awayTeamScore);
         weekResults.push({
             ...result,
             homeTeam: match.homeTeam.name,

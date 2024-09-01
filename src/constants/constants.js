@@ -113,7 +113,8 @@ export const SYSTEM_COLORS = {
     darkBlue: '#3F51B5',
     green: '#4CAF50',
     purple: '#ac7aaf',
-    red: '#ff7754'
+    red: '#ff7754',
+    darkRed: '#ff320a'
 };
 
 export const FORMATIONS = ['4-5-1', '4-3-3', '4-4-2', '3-5-2', '3-4-3'];

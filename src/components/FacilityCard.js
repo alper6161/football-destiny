@@ -2,23 +2,29 @@
 
 import {useStore} from "@/zustand/zustand";
 import {SYSTEM_COLORS} from "@/constants/constants";
+import {useRouter} from "next/navigation.js";
 
 const FacilityCard = () => {
     const {facility} = useStore((state) => state);
+    const router = useRouter();
 
     return (
-        <div style={cardStyle}>
+        <div style={cardStyle} onClick={()=> router.push('/facilities')}>
             <div style={titleStyle}>FACILITIES</div>
             <div style={facilityContainerStyle}>
-                <div style={facilityBoxStyle(SYSTEM_COLORS.green)}>
-                    Youth Academy
-                    <div style={valueStyle}>{facility?.youth_academy}</div>
-                </div>
-                <div style={facilityBoxStyle(SYSTEM_COLORS.red)}>
+                <div className='facility-box-style' style={{background:SYSTEM_COLORS.red}}>
                     Training Ground
                     <div style={valueStyle}>{facility?.training_ground}</div>
                 </div>
-                <div style={facilityBoxStyle((SYSTEM_COLORS.darkBlue))}>
+                <div className='facility-box-style' style={{background:SYSTEM_COLORS.darkRed}}>
+                    Medical
+                    <div style={valueStyle}>{facility?.medical}</div>
+                </div>
+                <div className='facility-box-style' style={{background:SYSTEM_COLORS.green}}>
+                    Youth Academy
+                    <div style={valueStyle}>{facility?.youth_academy}</div>
+                </div>
+                <div className='facility-box-style' style={{background:SYSTEM_COLORS.darkBlue}}>
                     Stadium
                     <div style={valueStyle}>{facility?.stadium}</div>
                 </div>
